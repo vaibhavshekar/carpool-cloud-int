@@ -9,3 +9,5 @@ mysql-connector-python
 shapely
 requests
 matplotlib
+pymysql   
+pyjwt     
