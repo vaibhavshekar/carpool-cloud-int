@@ -1,2 +1,5 @@
 /venv
 backend/.env
+frontend/src/app/api/auth/login.js
+frontend/src/app/api/auth/signup.js
+frontend/src/app/api/auth/rides
