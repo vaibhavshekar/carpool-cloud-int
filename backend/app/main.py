@@ -24,7 +24,7 @@ app.include_router(auth_router, prefix="/auth")
 app.include_router(rides_router, prefix="/rides")
 app.include_router(requests_router, prefix="/requests")
 
-@app.get("/")
+@app.get("/",methods=["GET", "HEAD"])
 def root():
     return {"message": "Welcome to Carpool API"}
 
