@@ -1,0 +1,11 @@
+fastapi 
+uvicorn 
+sqlalchemy 
+databases 
+bcrypt 
+python-jose[cryptography] 
+python-dotenv 
+mysql-connector-python
+shapely
+requests
+matplotlib

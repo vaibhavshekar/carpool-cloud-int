@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String    @id @default(uuid())
+  email       String    @unique
+  password    String
+  name        String
+  phoneNumber String?   // Phone number, only visible after request acceptance
+  rides       Ride[]    @relation("UserRides")
+  requests    Request[]
+}
+
+model Ride {
+  id            String    @id @default(uuid())
+  driverId      String
+  driver        User      @relation("UserRides", fields: [driverId], references: [id])
+  from          String
+  to            String
+  time          DateTime
+  seatsAvailable Int
+  requests      Request[]
+}
+
+model Request {
+  id          String   @id @default(uuid())
+  rideId      String
+  ride        Ride     @relation(fields: [rideId], references: [id])
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  status      String   @default("pending") // "pending", "accepted", "rejected"
+  acceptedAt  DateTime?
+}
