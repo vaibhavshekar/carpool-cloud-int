@@ -4,6 +4,8 @@ from .auth import router as auth_router
 from .rides import router as rides_router
 from .requests import router as requests_router
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
+import os
 
 app = FastAPI()
 
@@ -25,3 +27,7 @@ app.include_router(requests_router, prefix="/requests")
 @app.get("/")
 def root():
     return {"message": "Welcome to Carpool API"}
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Use Render's assigned port
+    uvicorn.run(app, host="0.0.0.0", port=port)
