@@ -23,7 +23,7 @@ export default function RequestsPage() {
 
   useEffect(() => {
     if (user) fetchRequests();
-  }, [user]);
+  }, [user,fetchRequests]);
 
   useEffect(() => {
     console.log("Updated Requests State:", requests);
