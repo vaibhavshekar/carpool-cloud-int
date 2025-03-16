@@ -20,7 +20,7 @@ export default function Signup() {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/auth/signup", {
+      const res = await fetch("https://carpool-cloud-backend.onrender.com/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password, phoneNumber }),

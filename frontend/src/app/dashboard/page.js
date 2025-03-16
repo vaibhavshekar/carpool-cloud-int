@@ -65,7 +65,7 @@ export default function Dashboard() {
     }
     try {
       const res = await fetch(
-        `http://localhost:8000/rides/find?from_location=${encodeURIComponent(from)}&to_location=${encodeURIComponent(to)}`,
+        `https://carpool-cloud-backend.onrender.com/rides/find?from_location=${encodeURIComponent(from)}&to_location=${encodeURIComponent(to)}`,
         { method: "GET" }
       );
       if (!res.ok) {
@@ -92,7 +92,7 @@ export default function Dashboard() {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/rides/request", {
+      const res = await fetch("https://carpool-cloud-backend.onrender.com/rides/request", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

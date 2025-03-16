@@ -32,7 +32,7 @@ export default function RequestsPage() {
   const fetchUserDetails = async (email) => {
     try {
       setIsLoading(true);
-      const res = await fetch(`http://127.0.0.1:8000/auth/user/details?email=${email}`);
+      const res = await fetch(`https://carpool-cloud-backend.onrender.com/auth/user/details?email=${email}`);
       const data = await res.json();
       setUser(data);
     } catch (error) {
@@ -45,8 +45,8 @@ export default function RequestsPage() {
       setIsLoading(true);
   
       const [userRequests, receivedRequests] = await Promise.all([
-        fetch(`http://127.0.0.1:8000/requests/requests/${user.id}`).then((res) => res.json()),
-        fetch(`http://127.0.0.1:8000/requests/requests/received/${user.id}`).then((res) => res.json()),
+        fetch(`https://carpool-cloud-backend.onrender.com/requests/requests/${user.id}`).then((res) => res.json()),
+        fetch(`https://carpool-cloud-backend.onrender.com/requests/requests/received/${user.id}`).then((res) => res.json()),
       ]);
   
       const allRequests = {
@@ -84,12 +84,12 @@ export default function RequestsPage() {
   
       // Fetch ride details
       const rideDetailsPromises = uniqueRideIds.map((rideId) =>
-        fetch(`http://127.0.0.1:8000/rides/ride/${rideId}`).then((res) => res.json())
+        fetch(`https://carpool-cloud-backend.onrender.com/rides/ride/${rideId}`).then((res) => res.json())
       );
   
       // Fetch user details
       const userDetailsPromises = uniqueUserIds.map((userId) =>
-        fetch(`http://127.0.0.1:8000/auth/user/details?user_id=${userId}`).then((res) => res.json())
+        fetch(`https://carpool-cloud-backend.onrender.com/auth/user/details?user_id=${userId}`).then((res) => res.json())
       );
   
       const rideDetailsArray = await Promise.all(rideDetailsPromises);
@@ -124,7 +124,7 @@ export default function RequestsPage() {
 
   const handleAction = async (action, requestId) => {
     try {
-      await fetch(`http://127.0.0.1:8000/requests/requests/${action}/${requestId}`, { method: "POST" });
+      await fetch(`https://carpool-cloud-backend.onrender.com/requests/requests/${action}/${requestId}`, { method: "POST" });
       fetchRequests();
     } catch (error) {
       console.error(`Error ${action}ing request:`, error);

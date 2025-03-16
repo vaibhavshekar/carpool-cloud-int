@@ -28,7 +28,7 @@ export default function AddRide({ closeAddRide }) {
 
   const fetchUserDetails = async (email) => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/auth/user/details?email=${email}`);
+      const response = await fetch(`https://carpool-cloud-backend.onrender.com/auth/user/details?email=${email}`);
       if (!response.ok) {
         throw new Error("Failed to fetch user details");
       }

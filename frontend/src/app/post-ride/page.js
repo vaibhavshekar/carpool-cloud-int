@@ -77,7 +77,7 @@ export default function PostRide() {
       formattedTime.setHours(hours);
       formattedTime.setMinutes(minutes);
 
-      const res = await fetch("http://localhost:8000/post", {
+      const res = await fetch("https://carpool-cloud-backend.onrender.com/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
